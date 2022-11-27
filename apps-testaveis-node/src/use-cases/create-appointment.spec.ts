@@ -1,16 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { Appointment } from "../entities/appointment";
+import { getFutureDate } from "../tests/utils/get-future-date";
 import { CreateAppointment } from "./create-appointment";
 
 describe("Create Appointment", () => {
   it("shold be able to create an appointment", () => {
-    const createAppointment = new CreateAppointment();
+    const startsAt = getFutureDate('2022-11-27')
+    const endsAt = getFutureDate('2022-11-28')
 
-    const startsAt = new Date();
-    const endsAt = new Date();
-
-    startsAt.setDate(startsAt.getDate() + 1);
-    endsAt.setDate(endsAt.getDate() + 2);
+    const createAppointment = new CreateAppointment()
 
     expect(
       createAppointment.execute({
