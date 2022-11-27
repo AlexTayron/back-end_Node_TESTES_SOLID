@@ -7,7 +7,17 @@ interface CreateAppointmentRequest {
 }
 type CreateAppointmentResponse = Appointment;
 export class CreateAppointment {
-  async execute(
-    request: CreateAppointmentRequest
-  ): Promise<CreateAppointmentResponse> {}
+  async execute({
+    customer,
+    startsAt,
+    endsAt,
+  }: CreateAppointmentRequest): Promise<CreateAppointmentResponse> {
+    const appointment = new Appointment({
+      customer,
+      startsAt,
+      endsAt,
+    });
+
+    return appointment;
+  }
 }
